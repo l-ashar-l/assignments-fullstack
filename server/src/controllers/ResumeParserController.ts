@@ -3,9 +3,9 @@ import configurations from '../config/configurations';
 import { parseMarkdownJson, resumeParsePrompt, genAImodel } from '../libs/utils';
 
 const genAI = new GoogleGenerativeAI(configurations.GOOGLE_API_KEY!);
+const model = genAI.getGenerativeModel({ model: genAImodel });
 
 export async function parseResume(text: string) {
-  const model = genAI.getGenerativeModel({ model: genAImodel });
   try {
     const result = await model.generateContent(resumeParsePrompt(text));
     const { response } = result;
