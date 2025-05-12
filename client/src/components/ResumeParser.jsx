@@ -11,7 +11,7 @@ export default function ResumeParser() {
     setError('');
     setIsLoading(true);
     try {
-      const res = await fetch('http://localhost:9000/api/parse', {
+      const res = await fetch('http://localhost:9000/api/resume/parse', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
