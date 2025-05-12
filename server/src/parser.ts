@@ -1,4 +1,3 @@
-// parser.ts
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import removeMarkdown from 'remove-markdown';
 import JSON5 from 'json5';
@@ -43,11 +42,9 @@ try {
 }
 
 function parseMarkdownJson(markdownText: any): any {
-  // Remove Markdown formatting
   const cleanedText = removeMarkdown(markdownText).trim();
 
   try {
-    // Parse the cleaned text into a JavaScript object
     const jsonObject = JSON5.parse(cleanedText);
     return jsonObject;
   } catch (error) {
