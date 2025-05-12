@@ -1,7 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import removeMarkdown from 'remove-markdown';
-import JSON5 from 'json5';
-import configurations from './config/configurations';
+import configurations from '../config/configurations';
+import { parseMarkdownJson } from '../libs/utils';
 
 const genAI = new GoogleGenerativeAI(configurations.GOOGLE_API_KEY!);
 
@@ -36,43 +35,7 @@ const { response } = result;
 try {
     return parseMarkdownJson(response.candidates?.[0]?.content?.parts[0]?.text);
   } catch (error) {
+    console.error('Failed to parseResume:', error);
+    throw new Error('Error in parseResume function');
   }
-}
-
-function parseMarkdownJson(markdownText: any): any {
-  const cleanedText = removeMarkdown(markdownText).trim();
-
-  try {
-    const jsonObject = JSON5.parse(cleanedText);
-    return jsonObject;
-  } catch (error) {
-    console.error('Failed to parse JSON:', error);
-    return null;
-  }
-}
-
-interface Resume {
-  fullName: string;
-  contactNumber: string | null;
-  emailAddress: string | null;
-  location: string | null;
-  skills: {
-    technical: string[];
-    nonTechnical: string[];
-  };
-  education: Array<{
-    degree: string;
-    university: string;
-    year: number;
-  }>;
-  workExperience: Array<{
-    company: string;
-    role: string;
-    period: string;
-    responsibilities: string | null;
-  }>;
-  certifications: string[];
-  languagesSpoken: string[];
-  suggestedResumeCategory: string;
-  recommendedJobRoles: string[];
 }

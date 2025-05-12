@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
-import { parseResume } from './parser';
+import { parseResume } from './controllers/ResumeParserController';
 
 const parserInput = z.object({ text: z.string().min(10) });
 export const parseRouter = Router();
