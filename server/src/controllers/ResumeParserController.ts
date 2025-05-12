@@ -9,7 +9,7 @@ export async function parseResume(text: string) {
   try {
     const result = await model.generateContent(resumeParsePrompt(text));
     const { response } = result;
-    return parseMarkdownJson(response.candidates?.[0]?.content?.parts[0]?.text);
+    return parseMarkdownJson(response.candidates?.[0]?.content?.parts[0]?.text ?? '');
   } catch (error) {
     console.error('Failed to parseResume:', error);
     throw new Error('Error in parseResume function');

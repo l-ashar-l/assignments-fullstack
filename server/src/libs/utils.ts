@@ -26,7 +26,7 @@ Extract and include the following:
 Return the response in JSON format.
 `;
 
-export function parseMarkdownJson(markdownText: any): Resume {
+export function parseMarkdownJson(markdownText: string): Resume {
   const cleanedText = removeMarkdown(markdownText).trim();
 
   try {
