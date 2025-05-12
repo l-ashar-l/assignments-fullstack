@@ -26,6 +26,15 @@ export default function ResumeParser() {
     }
   };
 
+
+  const handleInput = (e) => {
+    if(text.length < 10) {
+      setError('Input must be more than 10 characters');
+    }
+    else setError('');
+    setText(e);
+  }
+
   return (
     <div className="container">
       <h1 className="heading">Resume Parser</h1>
@@ -33,7 +42,7 @@ export default function ResumeParser() {
         className="textarea"
         placeholder="Paste your resume text here..."
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => handleInput(e.target.value)}
       />
       <br />
       <button className="button" onClick={handleParse}>
