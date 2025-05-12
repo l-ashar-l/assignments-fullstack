@@ -1,11 +1,9 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import removeMarkdown from 'remove-markdown';
 import JSON5 from 'json5';
-import dotenv from 'dotenv';
+import configurations from './config/configurations';
 
-dotenv.config();
-
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
+const genAI = new GoogleGenerativeAI(configurations.GOOGLE_API_KEY!);
 
 export async function parseResume(text: string) {
   const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
