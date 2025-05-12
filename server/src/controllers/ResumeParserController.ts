@@ -29,10 +29,9 @@ Extract and include the following:
 Return the response in JSON format.
 `;
 
-const result = await model.generateContent(prompt);
-const { response } = result;
-
 try {
+    const result = await model.generateContent(prompt);
+    const { response } = result;
     return parseMarkdownJson(response.candidates?.[0]?.content?.parts[0]?.text);
   } catch (error) {
     console.error('Failed to parseResume:', error);
