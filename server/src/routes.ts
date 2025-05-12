@@ -6,8 +6,8 @@ const parserInput = z.object({ text: z.string().min(10) });
 export const parseRouter = Router();
 
 parseRouter.post('/parse', async (req: Request, res: Response): Promise<void> => {
-  const { body = {} } = req.body;
-
+  const body = req.body ?? {};
+  
   const result = parserInput.safeParse(body);
   if (!result.success) {
     return void res
