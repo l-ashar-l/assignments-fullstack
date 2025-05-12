@@ -2,6 +2,8 @@ import removeMarkdown from 'remove-markdown';
 import JSON5 from 'json5';
 import Resume from '../types/IResume';
 
+export const genAImodel = 'gemini-1.5-flash';
+
 export const resumeParsePrompt = (text: string) => `
 You are a resume parsing assistant. Given the following resume text, extract all the important details and return them in a well-structured JSON format.
 
