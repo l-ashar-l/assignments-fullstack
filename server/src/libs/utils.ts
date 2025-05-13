@@ -15,7 +15,7 @@ Extract and include the following:
 - Contact Number
 - Email Address
 - Location
-- Skills (Technical and Non-Technical, separately if possible)
+- Skills (Technical and Non-Technical, separately if possible with proficiency level like { name: <skill name>, proficiency: <proficiency> })
 - Education
 - Work Experience (including company name, role, and responsibilities)
 - Certifications

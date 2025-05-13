@@ -1,11 +1,16 @@
+export interface SkillWithProficiency {
+  name: string;
+  proficiency: string;
+}
+
 export default interface Resume {
     fullName: string;
     contactNumber: string | null;
     emailAddress: string | null;
     location: string | null;
     skills: {
-      technical: string[];
-      nonTechnical: string[];
+      technical: SkillWithProficiency[];
+      nonTechnical: SkillWithProficiency[];
     };
     education: Array<{
       degree: string;
